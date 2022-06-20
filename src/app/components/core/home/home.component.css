@@ -1,0 +1,44 @@
+.title{
+  margin-bottom: 36px;
+}
+
+.main{
+  border-radius: 8px;
+  border-color: black;
+  background-color: rgb(78, 78, 78);
+  margin-bottom: 12px;
+  margin-right: 12px;
+  margin-left: 12px;
+  padding: 24px;
+}
+
+h1{
+  font-size: 40px;
+  margin: 0 0 4px 0;
+  text-align: center;
+}
+
+p{
+  font-size: 20px;
+  text-align: justify;
+}
+
+a{
+  font-size: 32px;
+  border-radius: 8px;
+  background-color: gray;
+  padding: 12px;
+  color: whitesmoke;
+}
+
+.description{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.buttons{
+  display: flex;
+  justify-content: space-evenly;
+}

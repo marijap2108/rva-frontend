@@ -1,0 +1,49 @@
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje sektora</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija sektora {{data.naziv}}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje sektora {{data.naziv}}</h3>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="content">
+      <!--  [(ngModel)] two way data binding, *angular direktiva, #promenljiva-->
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.naziv" placeholder="Naziv" [disabled]="flag == 3" name="Naziv" required/>
+      </mat-form-field>
+    </div>
+
+    <div class="content">  
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.oznaka" placeholder="Oznaka" [disabled]="flag == 3" name="Oznaka" required/>
+      </mat-form-field>
+    </div>
+  <!--kada imamo * ispred necega to se zove angular struktruna direktivna npr *ngFor i ovo je kao neka for petlja-->
+  <div class="form">
+    <mat-form-field *ngIf="flag == 1">
+      <mat-select [compareWith]="compare" [(ngModel)]="data.preduzece" placeholder="Preduzece" name="Preduzece" required>
+        <mat-option *ngFor="let preduzece of preduzeca" [value]="preduzece">
+          {{preduzece.naziv}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+    <div class="form">
+      <mat-form-field *ngIf="flag == 2 || flag == 3">
+        <mat-select [compareWith]="compare" [(ngModel)]="data.preduzece" placeholder="Preduzece" [disabled]="flag == 3" name="Preduzece" required>
+          <mat-option *ngFor="let preduzece of preduzeca" [value]="preduzece">
+            {{preduzece.naziv}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div class="mat-dialog-actions">
+    <!-- ngIf nam sakriva dugme a disabled nam ne da da kliknemo dugme dok npr nije popunjeno -->
+    <button mat-button *ngIf="flag == 1" type="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="add()">Sacuvaj</button>
+    <button mat-button *ngIf="flag == 2" type="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="update()">Azuriraj</button>
+    <button mat-button *ngIf="flag == 3" mat-dialog-close="1" (click)="delete()">Obrisi</button>
+    <button mat-button (click)="cancel()">Ponisti</button>
+  </div>
+
+</div>

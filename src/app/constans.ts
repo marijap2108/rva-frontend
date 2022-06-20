@@ -1,0 +1,5 @@
+export const OBRAZOVANJE_URI = "https://it69-2019.herokuapp.com/obrazovanje"
+export const PREDUZECE_URI = "https://it69-2019.herokuapp.com/preduzece"
+export const SEKTOR_URI = "https://it69-2019.herokuapp.com/sektor"
+export const RADNIK_URI = "https://it69-2019.herokuapp.com/radnik"
+export const RADNIK_S_URI = "https://it69-2019.herokuapp.com/radnik/sektor"

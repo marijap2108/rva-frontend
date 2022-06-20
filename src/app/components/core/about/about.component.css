@@ -1,0 +1,51 @@
+.title{
+  margin-bottom: 36px;
+}
+
+h1{
+  font-size: 32px;
+  margin: 0 0 4px 0;
+}
+
+.p1{
+  font-size: 20px;
+  margin: 0 0 36px 0;
+}
+
+.p2{
+  font-size: 16px;
+  max-width: 450px;
+  opacity: 0.8;
+}
+
+.aboutSubject{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+img{
+  aspect-ratio: 1/1;
+  width: 300px;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+}
+
+.subject{
+  display: flex;
+  border-radius: 8px;
+  border-color: black;
+  background-color: rgb(78, 78, 78);
+  margin-bottom: 12px;
+  margin-right: 12px;
+  padding: 24px;
+}
+
+.picture{
+  flex-grow: 1;
+  text-align: center;
+}
+
+.main{
+  margin-left: 12px;
+}
+

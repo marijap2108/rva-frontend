@@ -1,0 +1,26 @@
+<mat-toolbar class="title" color="primary">
+  <span class="title-center">Pocetna strana</span>
+</mat-toolbar>
+
+<div class="main">
+  <div class="description">
+    <h1>DOBRODOSLI!</h1>
+    <p>
+      Aplikacija sluzi za vodjenje evidencije o raznim podacima
+      unutar jednog preduzeca. Osim uvida u podatke, njih je moguce dodati,
+      modifikovati i/ili obrisati. Tabele koje su prikazane kako bi 
+      se olakaso uvid u sve potrebne informacije i podatke su:
+      radnik, preduzece, sektor i obrazovanje.
+      Svako preduzece poseduje svoj id, naziv, PIB, sediste i opis.
+      Tabela sektor u sebi sadrzi obelezja id, naziv, oznaku i id preduzeca kao strani kljuc.
+      Svako obrazovanje ima svoj id, naziv, opis, stepen strucne spreme i opis.
+      I na kraju svaki radnik poseduje svoja obelezja a to su id, ime i prezime radnika,
+      broj licne karte, id obrazovanja kao strani kljuc i id sektora u kom radi kao strani kljuc.
+    </p>
+  </div>
+  <div class="buttons">
+    <a mat-button routerLink="/preduzece">Preduzece</a>
+    <a mat-button routerLink="/obrazovanje">Obrazovanje</a>
+    <a mat-button routerLink="/sektor">Sektor</a>
+  </div>
+</div>

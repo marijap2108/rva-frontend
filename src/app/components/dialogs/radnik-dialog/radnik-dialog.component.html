@@ -1,0 +1,57 @@
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje radnika</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija radnika {{data.ime}}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje radnika {{data.ime}}</h3>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+      <!--  [(ngModel)] two way data binding, *angular direktiva, #promenljiva-->
+
+    <div class="content">  
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.brojLk" placeholder="Broj licne karte" [disabled]="flag == 3" name="Broj licne karte" required/>
+      </mat-form-field>
+    </div>
+
+    <div class="content">  
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.ime" placeholder="Ime" [disabled]="flag == 3" name="Ime" required/>
+      </mat-form-field>
+    </div>
+
+    <div class="content">  
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.prezime" placeholder="Prezime" [disabled]="flag == 3" name="Prezime" required/>
+      </mat-form-field>
+    </div>
+
+    <!--kada imamo * ispred necega to se zove angular struktruna direktivna npr *ngFor i ovo je kao neka for petlja-->
+    <div class="form">
+      <mat-form-field *ngIf="flag == 1">
+        <mat-select [compareWith]="compare" [(ngModel)]="data.obrazovanje" placeholder="Obrazovanje" name="Obrazovanje" required>
+          <mat-option *ngFor="let obrazovanje of obrazovanja" [value]="obrazovanje">
+            {{obrazovanje.naziv}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field *ngIf="flag == 2 || flag == 3">
+        <mat-select [compareWith]="compare" [(ngModel)]="data.obrazovanje" placeholder="Obrazovanje" [disabled]="flag == 3" name="Obrazovanje" required>
+          <mat-option *ngFor="let obrazovanje of obrazovanja" [value]="obrazovanje">
+            {{obrazovanje.naziv}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div class="mat-dialog-actions">
+    <!-- ngIf nam sakriva dugme a disabled nam ne da da kliknemo dugme dok npr nije popunjeno -->
+    <button mat-button *ngIf="flag == 1" type="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="add()">Sacuvaj</button>
+    <button mat-button *ngIf="flag == 2" type="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="update()">Azuriraj</button>
+    <button mat-button *ngIf="flag == 3" mat-dialog-close="1" (click)="delete()">Obrisi</button>
+    <button mat-button (click)="cancel()">Ponisti</button>
+  </div>
+
+</div>

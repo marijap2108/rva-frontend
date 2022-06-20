@@ -1,0 +1,35 @@
+<div class="container">
+  <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje obrazovanja</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija obrazovanja {{data.naziv}}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje artikla {{data.naziv}}</h3>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+    <div class="content">
+      <!--  [(ngModel)] two way data binding, *angular direktiva, #promenljiva-->
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.naziv" placeholder="Naziv" [disabled]="flag == 3" name="Naziv" required/>
+      </mat-form-field>
+    </div>
+
+    <div class="content">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.opis" placeholder="Opis" [disabled]="flag == 3" name="Opis" required/>
+      </mat-form-field>
+    </div>
+
+    <div class="content">
+      <mat-form-field>
+        <input matInput [(ngModel)]="data.stepenStrucneSpreme" placeholder="Stepen strucne spreme" [disabled]="flag == 3" name="Stepen strucne spreme" required/>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div class="mat-dialog-actions">
+    <!-- ngIf nam sakriva dugme a disabled nam ne da da kliknemo dugme dok npr nije popunjeno -->
+    <button mat-button *ngIf="flag == 1" type="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="add()">Sacuvaj</button>
+    <button mat-button *ngIf="flag == 2" type="submit" [disabled]="!formControl.valid" mat-dialog-close="1" (click)="update()">Azuriraj</button>
+    <button mat-button *ngIf="flag == 3" mat-dialog-close="1" (click)="delete()">Obrisi</button>
+    <button mat-button (click)="cancel()">Ponisti</button>
+  </div>
+
+</div>
